@@ -8,15 +8,54 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        "./node_modules/flowbite/**/*.js",
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                'body': [
+                    'Open Sans',
+                    'ui-sans-serif',
+                    'system-ui',
+                    '-apple-system',
+                    'system-ui',
+                    'Segoe UI',
+                    'Roboto',
+                    'Helvetica Neue',
+                    'Arial',
+                    'Noto Sans',
+                    'sans-serif',
+                    'Apple Color Emoji',
+                    'Segoe UI Emoji',
+                    'Segoe UI Symbol',
+                    'Noto Color Emoji'
+                ],
+                sans: [
+                    'Figtree',
+                    'Open Sans',
+                    'ui-sans-serif',
+                    'system-ui',
+                    '-apple-system',
+                    'system-ui',
+                    'Segoe UI',
+                    'Roboto',
+                    'Helvetica Neue',
+                    'Arial',
+                    'Noto Sans',
+                    'sans-serif',
+                    'Apple Color Emoji',
+                    'Segoe UI Emoji',
+                    'Segoe UI Symbol',
+                    'Noto Color Emoji',
+                    ...defaultTheme.fontFamily.sans
+                ],
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        require('flowbite/plugin')
+    ],
 };
