@@ -39,7 +39,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="Admin Email" />
 
                 <TextInput id="email" type="email" class="block w-full mt-1" v-model="form.email" required autofocus
                     autocomplete="username" />
@@ -48,7 +48,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Admin Password" />
 
                 <TextInput id="password" type="password" class="block w-full mt-1" v-model="form.password" required
                     autocomplete="current-password" />
