@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('zipcode', 45);
             $table->boolean('is_main')->default(1);
             $table->string('country_code', 3);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

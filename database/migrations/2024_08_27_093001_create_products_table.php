@@ -30,7 +30,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->foreignIdFor(User::class, 'deleted_by')->nullable();
 
-            $table->$table->timestamps();
+            $table->timestamps();
         });
     }
 
