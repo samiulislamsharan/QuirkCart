@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-</script>
-
 <template>
     <nav
         class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
@@ -24,10 +20,15 @@ import { Link } from '@inertiajs/vue3';
                     </svg>
                     <span class="sr-only">Toggle sidebar</span>
                 </button>
-                <a href="https://flowbite.com" class="flex items-center justify-between mr-4">
-                    <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                </a>
+                <Link :href="route('admin.dashboard')" class="flex items-center justify-between mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="h-8 mr-3 size-6" alt="QuirkCart Logo">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">QuirkCart</span>
+                </Link>
                 <form action="#" method="GET" class="hidden md:block md:pl-2">
                     <label for="topbar-search" class="sr-only">Search</label>
                     <div class="relative md:w-64 md:w-96">
@@ -365,7 +366,7 @@ import { Link } from '@inertiajs/vue3';
                                 </path>
                             </svg>
                             <Link :href="route('logout')" method="post" class="text-sm text-gray-900 dark:text-white">
-                                Logout
+                            Logout
                             </Link>
                         </a>
                     </div>
@@ -444,8 +445,9 @@ import { Link } from '@inertiajs/vue3';
                     <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                         <li>
                             <Link :href="route('logout')" method="post"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                out</Link>
+                                class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Sign out
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -453,3 +455,7 @@ import { Link } from '@inertiajs/vue3';
         </div>
     </nav>
 </template>
+
+<script setup lang="ts">
+import { Link } from '@inertiajs/vue3';
+</script>
