@@ -4,12 +4,12 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -959.3527,
-    "scrollLeft": 0,
+    "scrollTop": -345.6666,
+    "scrollLeft": -414,
     "zoomLevel": 1,
     "show": 430,
     "database": 4,
-    "databaseName": "quirk-cart-db",
+    "databaseName": "quirk_car_db",
     "canvasType": "ERD",
     "language": 1,
     "tableNameCase": 4,
@@ -603,7 +603,7 @@
         "tableId": "LpGsDuGkvqn7GA8F56yLn",
         "name": "published",
         "comment": "",
-        "dataType": "BOOLEAN",
+        "dataType": "TINYINT",
         "default": "",
         "options": 0,
         "ui": {
@@ -614,7 +614,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1724701503379,
+          "updateAt": 1724769322627,
           "createAt": 1724687653286
         }
       },
@@ -2645,7 +2645,7 @@
       -1,
       {
         "name": 1724687656202,
-        "dataType": 1724701503378
+        "dataType": 1724769322626
       }
     ],
     "X_rmXMB0o1w1AorPc3G2v": [
@@ -2725,7 +2725,7 @@
       -1,
       -1,
       {
-        "databaseName": 1724687835289
+        "databaseName": 1724769428197
       }
     ],
     "92kGncYxL4rSXoKzH6b7f": [
