@@ -26,3 +26,9 @@ class Brand extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+}
