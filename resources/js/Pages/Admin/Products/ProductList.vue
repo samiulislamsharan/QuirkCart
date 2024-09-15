@@ -331,9 +331,39 @@ const dialogVisible = ref(false)
 const editMode = ref(false)
 const isAddProduct = ref(false)
 
+const id = ref('');
+const title = ref('');
+const price = ref('');
+const quantity = ref('');
+const description = ref('');
+const product_images = ref([]);
+const published = ref('');
+const category_id = ref('');
+const brand_id = ref('');
+const in_stock = ref('');
+
 const openAddModal = () => {
     isAddProduct.value = true;
     dialogVisible.value = true;
     editMode.value = false;
+};
+
+const openEditModal = (product, index) => {
+    console.log(product, index);
+
+    id.value = product.id;
+    title.value = product.title;
+    price.value = product.price;
+    quantity.value = product.quantity;
+    description.value = product.description;
+    brand_id.value = product.brand_id;
+    category_id.value = product.category_id;
+    product_images.value = product.product_images;
+
+    isAddProduct.value = false;
+    dialogVisible.value = true;
+    editMode.value = true;
+
+    console.log('Show edit product');
 };
 </script>
