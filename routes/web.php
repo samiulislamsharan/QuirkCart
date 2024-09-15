@@ -52,6 +52,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('admin.products.index');
         Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
+        Route::put('/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
     });
 });
 // admin routes end
