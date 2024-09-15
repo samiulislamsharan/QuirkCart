@@ -230,6 +230,37 @@
                                 <td class="px-4 py-3">{{ product.quantity }}</td>
                                 <td class="px-4 py-3">{{ product.in_stock }}</td>
                                 <td class="px-4 py-3">{{ product.published }}</td>
+                                <td class="px-4 py-3">
+                                    <!-- show warning badge if quantity is less than or equal to 10 -->
+                                    <span v-if="product.quantity <= 10"
+                                        class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+                                        {{ product.quantity }}
+                                    </span>
+                                    <span v-else
+                                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                                        {{ product.quantity }}
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <span v-if="product.in_stock == 1"
+                                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                                        In Stock
+                                    </span>
+                                    <span v-else
+                                        class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                                        Stock Out
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button v-if="product.published == 1" type="button"
+                                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                        Published
+                                    </button>
+                                    <button v-else type="button"
+                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        Unpublished
+                                    </button>
+                                </td>
                                 <td class="px-4 py-3">{{ product.price }}</td>
                                 <td class="flex items-center justify-end px-4 py-3">
                                     <button :id="`${product.id}-button`" :data-dropdown-toggle="`${product.id}`"
