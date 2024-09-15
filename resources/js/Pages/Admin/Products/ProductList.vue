@@ -3,7 +3,7 @@
         <!-- Modal start here -->
         <el-dialog v-model="dialogVisible" :title="editMode ? 'Edit Product' : 'Add Product'" width="650"
             :before-close="handleClose">
-            <form class="mx-auto" @submit.prevent="AddProduct()">
+            <form class="mx-auto" @submit.prevent="editMode ? updateProduct() : AddProduct()">
                 <div class="relative z-0 w-full mb-5 group">
                     <input v-model="title" type="text" name="floating_title" id="floating_title"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
