@@ -334,6 +334,25 @@ const dialogVisible = ref(false)
 const editMode = ref(false)
 const isAddProduct = ref(false)
 
+// Image upload section start
+const productImages = ref([])
+const dialogImageUrl = ref('')
+
+const handlePictureCardPreview = (file) => {
+    dialogImageUrl.value = file.url || URL.createObjectURL(file.raw);
+    dialogVisible.value = true
+}
+
+const handleFileChange = (file) => {
+    console.log(file)
+    productImages.value.push(file)
+}
+
+const handleRemove = (file) => {
+    console.log(file)
+}
+// Image upload section end
+
 const id = ref('');
 const title = ref('');
 const price = ref('');
