@@ -94,9 +94,11 @@
             </form>
         </el-dialog>
         <!-- Modal end here -->
+
         <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
             <!-- Start coding here -->
             <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+                <!-- Table nav start -->
                 <div
                     class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                     <div class="w-full md:w-1/2">
@@ -192,6 +194,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- Table nav end -->
+
+                <!-- Table start -->
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -253,6 +258,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Table end -->
                 <nav class="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0"
                     aria-label="Table navigation">
                     <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -261,6 +267,7 @@
                         of
                         <span class="font-semibold text-gray-900 dark:text-white">1000</span>
                     </span>
+                    <!-- Table footer start -->
                     <ul class="inline-flex items-stretch -space-x-px">
                         <li>
                             <a href="#"
@@ -307,6 +314,7 @@
                             </a>
                         </li>
                     </ul>
+                    <!-- Table footer end -->
                 </nav>
             </div>
         </div>
