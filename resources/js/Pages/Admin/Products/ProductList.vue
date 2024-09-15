@@ -225,11 +225,8 @@
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ product.title }}
                                 </th>
-                                <td class="px-4 py-3">{{ product.category_id }}</td>
-                                <td class="px-4 py-3">{{ product.brand_id }}</td>
-                                <td class="px-4 py-3">{{ product.quantity }}</td>
-                                <td class="px-4 py-3">{{ product.in_stock }}</td>
-                                <td class="px-4 py-3">{{ product.published }}</td>
+                                <td class="px-4 py-3">{{ product.category.name }}</td>
+                                <td class="px-4 py-3">{{ product.brand.name }}</td>
                                 <td class="px-4 py-3">
                                     <!-- show warning badge if quantity is less than or equal to 10 -->
                                     <span v-if="product.quantity <= 10"
