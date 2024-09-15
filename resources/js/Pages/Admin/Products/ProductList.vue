@@ -76,14 +76,12 @@
                     </el-upload>
                 </div>
 
-                <!-- list of images for selected product -->
-                <div class="flex mb-8 flex-nowrap ">
-                    <div v-for="(pimage, index) in product_images" :key="pimage.id" class="relative w-32 h-32 ">
-                        <img class="w-24 h-20 rounded" :src="`/${pimage.image}`" alt="">
+                    <div v-for="(product_image, index) in product_images" :key="product_image.id"
+                        class="relative w-32 h-32 ">
+                        <img class="object-contain w-24 h-20 rounded" :src="`/${product_image.image}`" alt="">
                         <span
                             class="absolute top-0 right-8 transform -translate-y-1/2 w-3.5 h-3.5 bg-red-400 border-2 border-white dark:border-gray-800 rounded-full">
-                            <span @click="deleteImage(pimage, index)"
-                                class="absolute text-xs font-bold text-white transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">x</span>
+                            <span @click="deleteImage(product_image, index)"
                         </span>
                     </div>
                 </div>
