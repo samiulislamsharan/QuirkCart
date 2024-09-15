@@ -102,3 +102,11 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product updated successfully');
     }
+
+    public function deleteImage($id)
+    {
+        $image = ProductImage::where('id', $id)->delete();
+
+        return redirect()->route('admin.products.index')->with('success', 'Image deleted successfully');
+    }
+}
