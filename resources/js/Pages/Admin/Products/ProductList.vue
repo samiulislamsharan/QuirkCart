@@ -469,4 +469,50 @@ const openEditModal = (product, index) => {
 
     console.log('Show edit product');
 };
+
+const updateProduct = async () => {
+    const formData = new FormData();
+
+    formData.append('title', title.value);
+    formData.append('price', price.value);
+    formData.append('quantity', quantity.value);
+    formData.append('description', description.value);
+    formData.append('brand_id', brand_id.value);
+    formData.append('category_id', category_id.value);
+    formData.append('_method', 'PUT');
+
+    for (const image of productImages.value) {
+        formData.append('product_images[]', image.raw);
+    }
+
+    try {
+        await router.post(`/admin/products/update/${id.value}`, formData, {
+            onSuccess: page => {
+                dialogVisible.value = false;
+
+                resetFormData();
+
+                Swal.fire({
+                    title: page.props.flash.success,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end',
+                })
+            },
+        });
+    } catch (error) {
+        console.log(error);
+
+        // show the exception message as a toast
+        Swal.fire({
+            title: 'Error',
+            text: error.response.data.message,
+            icon: 'error',
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end',
+        })
+    }
+};
 </script>
