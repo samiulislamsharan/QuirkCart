@@ -121,7 +121,7 @@
                     </div>
                     <div
                         class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                        <button type="button"
+                        <button type="button" @click="openAddModal"
                             class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                             <svg class="w-[20px] h-[20px] text-white-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -323,6 +323,17 @@
 
 <script setup>
 import { usePage } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const products = usePage().props.products;
+
+const dialogVisible = ref(false)
+const editMode = ref(false)
+const isAddProduct = ref(false)
+
+const openAddModal = () => {
+    isAddProduct.value = true;
+    dialogVisible.value = true;
+    editMode.value = false;
+};
 </script>
