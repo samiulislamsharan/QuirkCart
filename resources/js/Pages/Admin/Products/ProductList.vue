@@ -470,6 +470,37 @@ const openEditModal = (product, index) => {
     console.log('Show edit product');
 };
 
+const deleteImage = async (product_image, index) => {
+    console.log(product_image, index);
+    try {
+        await router.delete(`/admin/products/image/${product_image.id}`, {
+            onSuccess: page => {
+                Swal.fire({
+                    title: page.props.flash.success,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end',
+                })
+
+                product_images.value.splice(index, 1);
+            },
+        });
+    } catch (error) {
+        console.log(error);
+
+        // show the exception message as a toast
+        Swal.fire({
+            title: 'Error',
+            text: error.response.data.message,
+            icon: 'error',
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end',
+        })
+    }
+};
+
 const updateProduct = async () => {
     const formData = new FormData();
 
