@@ -358,7 +358,10 @@ import { router, usePage } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
 
-const products = usePage().props.products;
+defineProps({
+    products: Array,
+})
+
 const categories = usePage().props.categories;
 const brands = usePage().props.brands;
 
