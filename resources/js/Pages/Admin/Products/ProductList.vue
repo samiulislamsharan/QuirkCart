@@ -434,6 +434,7 @@ const addProduct = async () => {
     }
 };
 
+// utility function(s) start here
 const resetFormData = () => {
     id.value = '';
     title.value = '';
@@ -451,6 +452,7 @@ const openAddModal = () => {
     dialogVisible.value = true;
     editMode.value = false;
 };
+// utility function(s) end here
 
 const openEditModal = (product, index) => {
     console.log(product, index);
