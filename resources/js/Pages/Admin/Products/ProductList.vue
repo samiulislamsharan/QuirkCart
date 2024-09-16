@@ -355,7 +355,7 @@
 
 <script setup>
 import { router, usePage } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
 
 const products = usePage().props.products;
@@ -596,4 +596,19 @@ const deleteProduct = async (product, index) => {
         }
     })
 }
+
+const initDropdownMenu = () => {
+    document.querySelectorAll('[data-dropdown-toggle]').forEach(button => {
+        const dropdownId = button.getAttribute('data-dropdown-toggle');
+        const dropdown = document.getElementById(dropdownId);
+
+        button.addEventListener('click', () => {
+            dropdown.classList.toggle('hidden');
+        });
+    });
+};
+
+onMounted(() => {
+    initDropdownMenu();
+});
 </script>
