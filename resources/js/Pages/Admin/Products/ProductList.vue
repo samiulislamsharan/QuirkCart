@@ -544,4 +544,56 @@ const updateProduct = async () => {
         })
     }
 };
+
+const deleteProduct = async (product, index) => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this product!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it',
+        showLoaderOnConfirm: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Store the current scroll position
+            const scrollPosition = window.scrollY;
+
+            try {
+                router.delete(`/admin/products/destroy/${product.id}`, {
+                    onSuccess: page => {
+                        Swal.fire({
+                            title: page.props.flash.success,
+                            icon: 'success',
+                            showConfirmButton: false,
+                            toast: true,
+                            position: 'top-end',
+                            timer: 3000,
+                            timerProgressBar: true,
+                        })
+
+                        // Restore the scroll position
+                        window.scrollTo(0, scrollPosition);
+                    },
+                });
+            } catch (error) {
+                console.log(error);
+
+                // show the exception message as a toast
+                Swal.fire({
+                    title: 'Error',
+                    text: error.response.data.message,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end',
+                    timer: 3000,
+                    timerProgressBar: true,
+                })
+            }
+        }
+    })
+}
 </script>
