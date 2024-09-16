@@ -495,6 +495,8 @@ const deleteImage = async (product_image, index) => {
             showConfirmButton: false,
             toast: true,
             position: 'top-end',
+            timer: 3000,
+            timerProgressBar: true,
         })
     }
 };
@@ -527,6 +529,8 @@ const updateProduct = async () => {
                     showConfirmButton: false,
                     toast: true,
                     position: 'top-end',
+                    timer: 3000,
+                    timerProgressBar: true,
                 })
             },
         });
@@ -541,6 +545,8 @@ const updateProduct = async () => {
             showConfirmButton: false,
             toast: true,
             position: 'top-end',
+            timer: 3000,
+            timerProgressBar: true,
         })
     }
 };
