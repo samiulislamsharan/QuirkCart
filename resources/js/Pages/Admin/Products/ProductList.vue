@@ -422,6 +422,8 @@ const addProduct = async () => {
                     showConfirmButton: false,
                     toast: true,
                     position: 'top-end',
+                    timer: 3000,
+                    timerProgressBar: true,
                 })
 
                 dialogVisible.value = false;
@@ -484,6 +486,8 @@ const deleteImage = async (product_image, index) => {
                     showConfirmButton: false,
                     toast: true,
                     position: 'top-end',
+                    timer: 3000,
+                    timerProgressBar: true,
                 })
 
                 product_images.value.splice(index, 1);
