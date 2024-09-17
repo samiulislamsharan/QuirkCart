@@ -3,10 +3,21 @@
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">QuirkCart</span>
-            </a>
-            <div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+            <div v-if="canLogin" class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+                <div class="mr-4">
                 <button type="button"
-                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                        class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white transition-all rounded-lg outline outline-2 outline-blue-500 hover:bg-blue-500 focus:ring-4 focus:outline focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                        </svg>
+                        <span class="sr-only">Cart</span>
+                        <div
+                            class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                            20</div>
+                    </button>
+                </div>
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
