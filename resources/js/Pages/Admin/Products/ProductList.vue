@@ -433,6 +433,18 @@ const addProduct = async () => {
         });
     } catch (error) {
         console.log(error);
+
+        // show the exception message as a toast
+        Swal.fire({
+            title: 'Error',
+            text: error.response.data.message,
+            icon: 'error',
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end',
+            timer: 3000,
+            timerProgressBar: true,
+        })
     }
 };
 
