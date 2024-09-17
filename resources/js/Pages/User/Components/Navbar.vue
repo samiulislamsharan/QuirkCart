@@ -2,11 +2,11 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
             <Link :href="route('user.home')" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">QuirkCart</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">QuirkCart</span>
             </Link>
             <div v-if="canLogin" class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
                 <div class="mr-4">
-                <button type="button"
+                    <button type="button"
                         class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white transition-all rounded-lg outline outline-2 outline-blue-500 hover:bg-blue-500 focus:ring-4 focus:outline focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -113,3 +113,11 @@
         </div>
     </nav>
 </template>
+
+<script setup>
+import { Link, usePage } from '@inertiajs/vue3';
+
+const canLogin = usePage().props.canLogin;
+const canRegister = usePage().props.canRegister;
+const auth = usePage().props.auth;
+</script>
