@@ -52,8 +52,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { initFlowbite } from 'flowbite'
 import UserLayout from './Layouts/UserLayout.vue';
 
 defineProps({
