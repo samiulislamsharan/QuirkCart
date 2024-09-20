@@ -55,11 +55,10 @@
 import UserLayout from './Layouts/UserLayout.vue';
 
 defineProps({
-    products: Array
-})
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-    initFlowbite();
+    products: Array,
+    canLogin: Boolean,
+    canRegister: Boolean,
+    laravelVersion: String,
+    phpVersion: String,
 })
 </script>
