@@ -2,7 +2,7 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
             <Link :href="route('user.home')" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">QuirkCart</span>
+            <ApplicationLogo />
             </Link>
             <div v-if="canLogin" class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
                 <div class="mr-4">
@@ -117,6 +117,7 @@
 </template>
 
 <script setup>
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link, usePage } from '@inertiajs/vue3';
 
 const canLogin = usePage().props.canLogin;
