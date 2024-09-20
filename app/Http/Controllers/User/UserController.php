@@ -12,7 +12,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category', 'brand', 'product_images')->orderBy('id', 'DESC')->limit(8)->get();
+        $products = Product::with(
+            'category',
+            'brand',
+            'product_images'
+        )
+            ->orderBy('id', 'DESC')
+            ->limit(8)
+            ->get();
 
         return Inertia::render('User/Index', [
             'products' => $products,
