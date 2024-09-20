@@ -27,4 +27,9 @@ class Cart
                 );
         }
     }
+
+    public static function getCookieCartItems()
+    {
+        return json_decode(request()->cookie('cart_items', '[]'), true);
+    }
 }
