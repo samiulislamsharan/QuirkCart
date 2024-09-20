@@ -32,4 +32,9 @@ class Cart
     {
         return json_decode(request()->cookie('cart_items', '[]'), true);
     }
+
+    public static function setCookieCartItems()
+    {
+        Cookie::queue('cart_items', fn(int $carry, array $item) => $carry + $item['quantity'], 0);
+    }
 }
