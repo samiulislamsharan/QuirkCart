@@ -93,7 +93,42 @@ class CartController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy(Request $request, Product $product)
     {
-        //
+        $user = $request->user();
+
+        if ($user) {
+            CartItem::query()
+                ->where([
+                    'user_id' => $user->id,
+                    'product_id' => $product->id
+                ])
+                ->first()
+                ?->delete();
+
+            if (CartItem::count() <= 0) {
+                return redirect()->route('user.home')->with('info', 'Cart is empty!');
+            } else {
+                return redirect()->back()->with('success', 'Product removed from cart successfully!');
+            }
+        } else {
+            $cartItems = Cart::getCookieCartItems();
+
+            foreach ($cartItems as $key => $cartItem) {
+                if ($cartItem['product_id'] === $product->id) {
+                    unset($cartItems[$key]);
+                    break;
+                }
+            }
+
+            Cart::setCookieCartItems($cartItems);
+
+            if (count($cartItems) <= 0) {
+                return redirect()->route('user.home')->with('info', 'Cart is empty!');
+            } else {
+                return redirect()->back()->with('success', 'Product removed from cart successfully!');
+            }
+        }
     }
 }
