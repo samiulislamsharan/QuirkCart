@@ -65,11 +65,34 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-    {
-        //
-    }
 
-    public function destroy()
+    public function update(Request $request, Product $product)
+    {
+        $quantity = $request->integer('quantity');
+        $user = $request->user();
+
+        if ($user) {
+            CartItem::where(
+                [
+                    'user_id' => $user->id,
+                    'product_id' => $product->id
+                ]
+            )->update(['quantity' => $quantity]);
+        } else {
+            $cartItems = Cart::getCookieCartItems();
+
+            foreach ($cartItems as $cartItem) {
+                if ($cartItem['product_id'] === $product->id) {
+                    $cartItem['quantity'] += $quantity;
+                    break;
+                }
+            }
+
+            Cart::setCookieCartItems($cartItems);
+        }
+
+        return redirect()->back();
+    }
     {
         //
     }
