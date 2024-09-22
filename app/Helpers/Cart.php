@@ -61,4 +61,30 @@ class Cart
             CartItem::insert($savedCartItems);
         }
     }
+
+    public static function moveCookieCartItemsToDb()
+    {
+        $request = request();
+        $cartItems = self::getCookieCartItems();
+        $newCartItems = [];
+
+        foreach ($cartItems as $cartItem) {
+            $existingCartItem = CartItem::where([
+                'user_id' => $request->user()->id,
+                'product_id' => $cartItem['product_id']
+            ])->first();
+
+            if (!$existingCartItem) {
+                $newCartItems[] = [
+                    'user_id' => $request->user()->id,
+                    'product_id' => $cartItem['product_id'],
+                    'quantity' => $cartItem['quantity']
+                ];
+            }
+        }
+
+        if (!empty($newCartItems)) {
+            CartItem::insert($newCartItems);
+        }
+    }
 }
