@@ -37,4 +37,28 @@ class Cart
     {
         Cookie::queue('cart_items', fn(int $carry, array $item) => $carry + $item['quantity'], 0);
     }
+
+    public static function saveCookieCartItems()
+    {
+        $user = auth()->user();
+        $userCartItems = CartItem::where(['user_id' => $user->id])->get()->keyBy('product_id');
+        $savedCartItems = [];
+
+        foreach (self::getCookieCartItems() as $cartItem) {
+            if (isset($userCartItems[$cartItem['product_id']])) {
+                $userCartItems[$cartItem['product_id']]->increment('quantity', $cartItem['quantity']);
+                continue;
+            }
+
+            $savedCartItems[] = [
+                'user_id' => $user->id,
+                'product_id' => $cartItem['product_id'],
+                'quantity' => $cartItem['quantity']
+            ];
+        }
+
+        if (!empty($savedCartItems)) {
+            CartItem::insert($savedCartItems);
+        }
+    }
 }
