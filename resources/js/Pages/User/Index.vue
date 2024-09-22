@@ -61,4 +61,22 @@ defineProps({
     laravelVersion: String,
     phpVersion: String,
 })
+
+const addToCart = (product) => {
+    console.log(product);
+
+    router.post(route('cart.store', product), {
+        onSuccess: page => {
+            Swal.fire({
+                title: page.props.flash.success,
+                icon: 'success',
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end',
+                timer: 3000,
+                timerProgressBar: true,
+            })
+        },
+    })
+}
 </script>
