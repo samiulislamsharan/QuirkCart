@@ -1,7 +1,7 @@
 <template>
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-            <Link :href="route('user.home')" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <Link :href="route('user.home')" class="flex items-center rtl:space-x-reverse">
             <ApplicationLogo />
             </Link>
             <div v-if="canLogin" class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
