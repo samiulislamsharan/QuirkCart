@@ -52,6 +52,7 @@
 </template>
 
 <script setup>
+import { router } from '@inertiajs/vue3';
 import UserLayout from './Layouts/UserLayout.vue';
 
 defineProps({
