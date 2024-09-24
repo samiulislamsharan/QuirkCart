@@ -38,7 +38,16 @@ class Cart
 
     public static function getCookieCartItems()
     {
-        return json_decode(request()->cookie('cart_items', '[]'), true);
+        $cookieCartItems = Cookie::get('cart_items', '[]');
+
+        $cartItems = json_decode($cookieCartItems, true);
+
+        // Ensure the result is always an array
+        if (!is_array($cartItems)) {
+            $cartItems = [];
+        }
+
+        return $cartItems;
     }
 
     public static function setCookieCartItems(array $cartItems)
