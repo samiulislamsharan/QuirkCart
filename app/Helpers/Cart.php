@@ -31,6 +31,8 @@ class Cart
                 ->map(
                     fn(CartItem $item) => ['product_id' => $item->product_id, 'quantity' => $item->quantity]
                 );
+        } else {
+            return self::getCookieCartItems();
         }
     }
 
