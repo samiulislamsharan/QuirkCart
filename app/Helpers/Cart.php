@@ -25,13 +25,11 @@ class Cart
     public static function getCartItems()
     {
         if ($user = auth()->user()) {
-            return CartItem::where('user_id', $user->id)
+            return CartItem::query()
+                ->whereUserId($user->id)
                 ->get()
                 ->map(
-                    fn(CartItem $item) => [
-                        'product_id' => $item->product_id,
-                        'quantity' => $item->quantity
-                    ]
+                    fn(CartItem $item) => ['product_id' => $item->product_id, 'quantity' => $item->quantity]
                 );
         }
     }
