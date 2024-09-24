@@ -52,16 +52,7 @@ class Cart
 
     public static function setCookieCartItems(array $cartItems)
     {
-        $totalQuantity = array_reduce(
-            $cartItems,
-            function ($carry, $item) {
-                return $carry + $item['quantity'];
-            },
-            0
-        );
-
-        // Set the cookie with the total quantity
-        Cookie::queue('cart_items', (string) $totalQuantity);
+        Cookie::queue('cart_items', json_encode($cartItems), 60 * 24 * 30); // 30 days
     }
 
     public static function saveCookieCartItems()
