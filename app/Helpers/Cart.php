@@ -12,7 +12,7 @@ class Cart
     public static function getCount()
     {
         if ($user = auth()->user()) {
-            return CartItem::where('user_id', $user->id)->sum('quantity');
+            return CartItem::whereUserId($user->id)->count();
         }
     }
 
