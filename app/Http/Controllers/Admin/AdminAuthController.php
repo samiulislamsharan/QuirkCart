@@ -16,7 +16,6 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
-        #validate request data
         $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -30,8 +29,7 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        #Redirect back with an error if login fails
-        return redirect()->route('admin.login')->withErrors(['error' => 'Invalid credentials.']);    
+        return redirect()->route('admin.login')->with('error', 'Invalid credentials.');    
     }
 
     public function logout(Request $request)
