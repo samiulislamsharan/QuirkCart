@@ -1,5 +1,10 @@
 <template>
     <UserLayout>
+
+        <!-- hero section start -->
+        <Hero />
+        <!-- hero section end -->
+
         <!-- main content start -->
         <div class="bg-white">
             <div class="max-w-2xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -69,6 +74,7 @@
 <script setup>
 import { router } from '@inertiajs/vue3';
 import UserLayout from './Layouts/UserLayout.vue';
+import Hero from './Components/Hero.vue';
 
 defineProps({
     products: Array,

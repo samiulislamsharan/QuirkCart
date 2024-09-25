@@ -5,10 +5,6 @@
 
     <!-- main content start -->
 
-    <!-- hero section start -->
-    <Hero />
-    <!-- hero section end -->
-
     <slot />
     <!-- main content end -->
 
@@ -22,7 +18,6 @@
 import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 
-import Hero from '../Components/Hero.vue';
 import Navbar from '../Components/Navbar.vue';
 import Footer from '../Components/Footer.vue';
 
