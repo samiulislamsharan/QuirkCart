@@ -19,3 +19,8 @@ class UserAddress extends Model
         'detail',
         'is_main',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
