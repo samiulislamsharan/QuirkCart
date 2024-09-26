@@ -288,4 +288,5 @@ const carts = computed(() => usePage().props.cart.data.items)
 const total = computed(() => usePage().props.cart.data.total)
 const products = computed(() => usePage().props.cart.data.products)
 
+const itemId = (id) => carts.value.findIndex((item) => item.product_id === id)
 </script>
