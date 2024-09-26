@@ -41,9 +41,11 @@
                                                 </button>
                                                 <input type="text" id="counter-input" data-input-counter
                                                     class="w-10 text-sm font-medium text-center text-gray-900 bg-transparent border-0 shrink-0 focus:outline-none focus:ring-0 dark:text-white"
-                                                    placeholder="" value="2" required />
-                                                <button type="button" id="increment-button"
-                                                    data-input-counter-increment="counter-input"
+                                                    placeholder="" required />
+                                                <button
+                                                    @click.prevent="update(product, carts[itemId(product.id)].quantity + 1)"
+                                                    type="button" :id="'increment-button-' + product.id"
+                                                    :data-input-counter-increment="'counter-input-' + product.id"
                                                     class="inline-flex items-center justify-center w-5 h-5 bg-gray-100 border border-gray-300 rounded-md shrink-0 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                                                     <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white"
                                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
