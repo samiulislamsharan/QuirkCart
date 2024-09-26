@@ -15,7 +15,8 @@
                                     <div
                                         class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                                         <a href="#" class="shrink-0 md:order-1">
-                                            <img v-if="product.product_images.length > 0" class="w-20 h-20"
+                                            <img v-if="product.product_images.length > 0"
+                                                class="object-contain w-20 h-20"
                                                 :src="`/${product.product_images[0].image}`" alt="product image" />
                                             <img v-else
                                                 src="https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg"
