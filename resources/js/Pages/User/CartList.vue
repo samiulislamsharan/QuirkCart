@@ -281,7 +281,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
 import UserLayout from './Layouts/UserLayout.vue';
 
 const carts = computed(() => usePage().props.cart.data.items)
@@ -289,4 +289,10 @@ const total = computed(() => usePage().props.cart.data.total)
 const products = computed(() => usePage().props.cart.data.products)
 
 const itemId = (id) => carts.value.findIndex((item) => item.product_id === id)
+const update = (product, quantity) =>
+    router.patch(route('cart.update', product),
+        {
+            quantity,
+        }
+    );
 </script>
