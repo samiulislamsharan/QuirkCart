@@ -4,15 +4,55 @@ namespace App\Http\Controllers\User;
 
 use App\Helper\Cart;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CartResource;
 use App\Models\CartItem;
 use App\Models\Product;
+use App\Models\UserAddress;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = $request->user();
+
+        if ($user) {
+            $cartItems = CartItem::query()
+                ->where('user_id', $user->id)
+                ->with('product')
+                ->get();
+
+            $userAddresses = UserAddress::query()
+                ->where('user_id', $user->id)
+                ->where('is_main', 1)
+                ->first();
+
+            if ($cartItems->count() > 0) {
+                return Inertia::render(
+                    'User/CartList',
+                    [
+                        'cartItems' => $cartItems,
+                        'userAddresses' => $userAddresses,
+                    ]
+                );
+            }
+        } else {
+            $cartItems = Cart::getCookieCartItems();
+
+            if (count($cartItems) > 0) {
+                $cartItems = new CartResource(Cart::getProductAndCartItems());
+
+                return Inertia::render(
+                    'User/CartList',
+                    [
+                        'cartItems' => $cartItems,
+                    ]
+                );
+            } else {
+                return redirect()->back();
+            }
+        }
     }
 
     public function store(Request $request, Product $product)
