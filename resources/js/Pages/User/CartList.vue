@@ -26,9 +26,12 @@
                                         <label for="counter-input" class="sr-only">Choose quantity:</label>
                                         <div class="flex items-center justify-between md:order-3 md:justify-end">
                                             <div class="flex items-center">
-                                                <button type="button" id="decrement-button"
-                                                    data-input-counter-decrement="counter-input"
-                                                    class="inline-flex items-center justify-center w-5 h-5 bg-gray-100 border border-gray-300 rounded-md shrink-0 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                                                <button
+                                                    @click.prevent="update(product, carts[itemId(product.id)].quantity - 1)"
+                                                    type="button" :id="'decrement-button-' + product.id"
+                                                    :data-input-counter-decrement="'counter-input-' + product.id"
+                                                    :disabled="carts[itemId(product.id)].quantity <= 1"
+                                                    :class="[carts[itemId(product.id)].quantity > 1 ? 'cursor-pointer' : 'cursor-not-allowed text-gray-300 dark:text-gray-500', 'inline-flex items-center justify-center w-5 h-5 bg-gray-100 border border-gray-300 rounded-md shrink-0 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700']">
                                                     <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white"
                                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                         fill="none" viewBox="0 0 18 2">
