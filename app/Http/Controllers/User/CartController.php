@@ -83,7 +83,7 @@ class CartController extends Controller
 
             foreach ($cartItems as $cartItem) {
                 if ($cartItem['product_id'] === $product->id) {
-                    $cartItem['quantity'] += $quantity;
+                    $cartItem['quantity'] = $quantity;
                     break;
                 }
             }
