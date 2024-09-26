@@ -295,4 +295,6 @@ const update = (product, quantity) =>
             quantity,
         }
     );
+
+const remove = (product) => router.delete(route('cart.destroy', product));
 </script>
