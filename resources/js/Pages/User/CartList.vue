@@ -39,7 +39,8 @@
                                                             stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
                                                     </svg>
                                                 </button>
-                                                <input type="text" id="counter-input" data-input-counter
+                                                <input v-model="carts[itemId(product.id)].quantity" type="text"
+                                                    :id="'counter-input-' + product.id" data-input-counter
                                                     class="w-10 text-sm font-medium text-center text-gray-900 bg-transparent border-0 shrink-0 focus:outline-none focus:ring-0 dark:text-white"
                                                     placeholder="" required />
                                                 <button
