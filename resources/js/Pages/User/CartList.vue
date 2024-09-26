@@ -233,7 +233,7 @@
                                     <dl
                                         class="flex items-center justify-between gap-4 pt-2 border-t border-gray-200 dark:border-gray-700">
                                         <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                        <dd class="text-base font-bold text-gray-900 dark:text-white">&#2547 8,191.00
+                                        <dd class="text-base font-bold text-gray-900 dark:text-white">&#2547 {{ total }}
                                         </dd>
                                     </dl>
                                 </div>
