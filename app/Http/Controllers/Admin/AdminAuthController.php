@@ -21,7 +21,6 @@ class AdminAuthController extends Controller
             'password' => 'required',
         ]);
 
-        #credentials
         $credentials = $request->only('email', 'password');
         $credentials['isAdmin'] = true;
 
