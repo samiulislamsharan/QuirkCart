@@ -36,6 +36,8 @@ class CartController extends Controller
                         'userAddresses' => $userAddresses,
                     ]
                 );
+            } else {
+                return redirect()->back();
             }
         } else {
             $cartItems = Cart::getCookieCartItems();
