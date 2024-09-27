@@ -121,7 +121,7 @@ class CartController extends Controller
         } else {
             $cartItems = Cart::getCookieCartItems();
 
-            foreach ($cartItems as $cartItem) {
+            foreach ($cartItems as &$cartItem) {
                 if ($cartItem['product_id'] === $product->id) {
                     $cartItem['quantity'] = $quantity;
                     break;
