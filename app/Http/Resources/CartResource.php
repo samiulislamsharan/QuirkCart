@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Helper\Cart;
+use App\Helpers\CurrencyHelper;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -26,7 +27,7 @@ class CartResource extends JsonResource
 
         return [
             'count' => Cart::getCount(),
-            'total' => $total,
+            'total' => CurrencyHelper::formatBDT($total),
             'items' => $cartItems,
             'products' => ProductResource::collection($products),
         ];
