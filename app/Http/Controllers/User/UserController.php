@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Helpers\CurrencyHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,15 @@ class UserController extends Controller
             ->orderBy('id', 'DESC')
             ->limit(8)
             ->get();
+
+        // Format the price for each product
+        $products->transform(
+            function ($product) {
+                $product->price = CurrencyHelper::formatBDT($product->price);
+
+                return $product;
+            }
+        );
 
         return Inertia::render('User/Index', [
             'products' => $products,
