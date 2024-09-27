@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\CurrencyHelper;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +20,7 @@ class ProductResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'description' => $this->description,
-            'price' => $this->price,
+            'price' => CurrencyHelper::formatBDT($this->price),
             'quantity' => $this->quantity,
             'status' => $this->status,
             'created_at' => $this->created_at,
