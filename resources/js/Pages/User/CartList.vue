@@ -59,7 +59,7 @@
                                             </div>
                                             <div class="text-end md:order-4 md:w-32">
                                                 <p class="text-base font-bold text-gray-900 dark:text-white">
-                                                    &#2547 {{ product.price }}
+                                                    {{ product.price }}
                                                 </p>
                                             </div>
                                         </div>
@@ -239,7 +239,7 @@
                                     <dl
                                         class="flex items-center justify-between gap-4 pt-2 border-t border-gray-200 dark:border-gray-700">
                                         <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                        <dd class="text-base font-bold text-gray-900 dark:text-white">&#2547 {{ total }}
+                                        <dd class="text-base font-bold text-gray-900 dark:text-white">{{ total }}
                                         </dd>
                                     </dl>
                                 </div>
