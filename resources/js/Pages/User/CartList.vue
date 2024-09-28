@@ -23,7 +23,8 @@
                                                 class="object-contain object-center w-full h-full lg:h-full lg:w-full" />
                                         </a>
 
-                                        <label for="counter-input" class="sr-only">Choose quantity:</label>
+                                        <label :for="'counter-input-' + product.id" class="sr-only">Choose
+                                            quantity:</label>
                                         <div class="flex items-center justify-between md:order-3 md:justify-end">
                                             <div class="flex items-center">
                                                 <button
