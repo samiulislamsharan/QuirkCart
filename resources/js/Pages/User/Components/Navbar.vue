@@ -6,7 +6,7 @@
             </Link>
             <div v-if="canLogin" class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
                 <div class="mr-4">
-                    <Link :href="route('cart.index')"
+                    <Link :href="route('cart.index')" as="button"
                         class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white transition-all rounded-lg outline outline-2 outline-blue-500 hover:bg-blue-500 focus:ring-4 focus:outline focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
