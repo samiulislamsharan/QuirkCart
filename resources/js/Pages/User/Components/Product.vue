@@ -55,7 +55,27 @@
 </template>
 
 <script setup>
+import { router } from '@inertiajs/vue3';
+
 defineProps({
     products: Array
 })
+
+const addToCart = (product) => {
+    console.log(product);
+
+    router.post(route('cart.store', product), {
+        onSuccess: page => {
+            Swal.fire({
+                title: page.props.flash.success,
+                icon: 'success',
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end',
+                timer: 3000,
+                timerProgressBar: true,
+            })
+        },
+    })
+}
 </script>

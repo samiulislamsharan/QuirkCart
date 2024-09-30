@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { Link, router } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 import UserLayout from './Layouts/UserLayout.vue';
 import Hero from './Components/Hero.vue';
 import Product from './Components/Product.vue';
@@ -37,22 +37,4 @@ defineProps({
     laravelVersion: String,
     phpVersion: String,
 })
-
-const addToCart = (product) => {
-    console.log(product);
-
-    router.post(route('cart.store', product), {
-        onSuccess: page => {
-            Swal.fire({
-                title: page.props.flash.success,
-                icon: 'success',
-                showConfirmButton: false,
-                toast: true,
-                position: 'top-end',
-                timer: 3000,
-                timerProgressBar: true,
-            })
-        },
-    })
-}
 </script>
