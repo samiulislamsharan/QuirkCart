@@ -37,19 +37,13 @@
 
                                     <!-- Filters -->
                                     <form class="mt-4 border-t border-gray-200">
-                                        <h3 class="sr-only">Categories</h3>
-                                        <ul role="list" class="px-2 py-3 font-medium text-gray-900">
-                                            <li v-for="category in subCategories" :key="category.name">
-                                                <a :href="category.href" class="block px-2 py-3">{{ category.name }}</a>
-                                            </li>
-                                        </ul>
-
-                                        <Disclosure as="div" v-for="section in filters" :key="section.id"
-                                            class="px-4 py-6 border-t border-gray-200" v-slot="{ open }">
-                                            <h3 class="flow-root -mx-2 -my-3">
+                                        <!-- price filter start -->
+                                        <Disclosure as="div" class="px-4 py-6 border-t border-gray-200"
+                                            v-slot="{ open }">
+                                            <h3 class="flow-root -my-3">
                                                 <DisclosureButton
-                                                    class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500">
-                                                    <span class="font-medium text-gray-900">{{ section.name }}</span>
+                                                    class="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
+                                                    <span class="font-medium text-gray-900">Price</span>
                                                     <span class="flex items-center ml-6">
                                                         <svg v-if="!open" class="w-5 h-5 text-gray-800 dark:text-white"
                                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -69,20 +63,124 @@
                                                 </DisclosureButton>
                                             </h3>
                                             <DisclosurePanel class="pt-6">
-                                                <div class="space-y-6">
-                                                    <div v-for="(option, optionIdx) in section.options"
-                                                        :key="option.value" class="flex items-center">
-                                                        <input :id="`filter-mobile-${section.id}-${optionIdx}`"
-                                                            :name="`${section.id}[]`" :value="option.value"
-                                                            type="checkbox" :checked="option.checked"
-                                                            class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
-                                                        <label :for="`filter-mobile-${section.id}-${optionIdx}`"
-                                                            class="flex-1 min-w-0 ml-3 text-gray-500">{{ option.label
-                                                            }}</label>
+                                                <div class="space-y-4">
+                                                    <div
+                                                        class="flex items-center justify-between px-4 py-6 space-x-3 border-t border-gray-200">
+                                                        <div class="basis-1/3">
+                                                            <label for="filter-price-from"
+                                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                                From
+                                                            </label>
+                                                            <input v-model="filterPrices.prices[0]" type="number"
+                                                                id="filter-price-from"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                min="0">
+                                                        </div>
+
+                                                        <div class="basis-1/3">
+                                                            <label for="filter-price-to"
+                                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                                To
+                                                            </label>
+                                                            <input v-model="filterPrices.prices[1]" type="number"
+                                                                id="filter-price-to"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                min="0">
+                                                        </div>
+
+                                                        <button @click="applyPriceFilter()" type="button"
+                                                            class="self-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                            Apply
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </DisclosurePanel>
                                         </Disclosure>
+                                        <!-- price filter end -->
+
+                                        <!-- brand filter start -->
+                                        <Disclosure as="div" class="px-4 py-6 border-t border-gray-200"
+                                            v-slot="{ open }">
+                                            <h3 class="flow-root -my-3">
+                                                <DisclosureButton
+                                                    class="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
+                                                    <span class="font-medium text-gray-900">Brands</span>
+                                                    <span class="flex items-center ml-6">
+                                                        <svg v-if="!open" class="w-5 h-5 text-gray-800 dark:text-white"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 12h14m-7 7V5" />
+                                                        </svg>
+
+                                                        <svg v-else class="w-5 h-5 text-gray-800 dark:text-white"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2" d="M5 12h14" />
+                                                        </svg>
+                                                    </span>
+                                                </DisclosureButton>
+                                            </h3>
+                                            <DisclosurePanel class="pt-6">
+                                                <div class="space-y-4">
+                                                    <div v-for="brand in brands" :key="brand.id"
+                                                        class="flex items-center">
+                                                        <input :id="`filter-${brand.id}`" :value="brand.id"
+                                                            v-model="selectedBrands" type="checkbox"
+                                                            class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                                                        <label :for="`filter-${brand.id}`"
+                                                            class="ml-3 text-sm text-gray-600">
+                                                            {{ brand.name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </DisclosurePanel>
+                                        </Disclosure>
+                                        <!-- brand filter end -->
+
+                                        <!-- category filter start -->
+                                        <Disclosure as="div" class="px-4 py-6 border-t border-gray-200"
+                                            v-slot="{ open }">
+                                            <h3 class="flow-root -my-3">
+                                                <DisclosureButton
+                                                    class="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
+                                                    <span class="font-medium text-gray-900">Categories</span>
+                                                    <span class="flex items-center ml-6">
+                                                        <svg v-if="!open" class="w-5 h-5 text-gray-800 dark:text-white"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 12h14m-7 7V5" />
+                                                        </svg>
+
+                                                        <svg v-else class="w-5 h-5 text-gray-800 dark:text-white"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2" d="M5 12h14" />
+                                                        </svg>
+                                                    </span>
+                                                </DisclosureButton>
+                                            </h3>
+                                            <DisclosurePanel class="pt-6">
+                                                <div class="space-y-4">
+                                                    <div v-for="category in categories" :key="category.id"
+                                                        class="flex items-center">
+                                                        <input :id="`filter-${category.id}`" :value="category.id"
+                                                            v-model="selectedCategories" type="checkbox"
+                                                            class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                                                        <label :for="`filter-${category.id}`"
+                                                            class="ml-3 text-sm text-gray-600">
+                                                            {{ category.name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </DisclosurePanel>
+                                        </Disclosure>
+                                        <!-- category filter end -->
                                     </form>
                                 </DialogPanel>
                             </TransitionChild>
@@ -157,26 +255,56 @@
                         </div>
                     </div>
 
-                    <section aria-labelledby="products-heading" class="pt-6 pb-24">
+                    <category aria-labelledby="products-heading" class="pt-6 pb-24">
                         <h2 id="products-heading" class="sr-only">Products</h2>
 
                         <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                             <!-- Filters -->
                             <form class="hidden lg:block">
-                                <h3 class="sr-only">Categories</h3>
+                                <!-- price filter start -->
+                                <h3 class="font-medium text-gray-900">Price</h3>
                                 <ul role="list"
                                     class="pb-6 space-y-4 text-sm font-medium text-gray-900 border-b border-gray-200">
-                                    <li v-for="category in subCategories" :key="category.name">
-                                        <a :href="category.href">{{ category.name }}</a>
+                                    <li>
+                                        <div class="flex items-center justify-between space-x-3">
+                                            <div class="basis-1/3">
+                                                <label for="filter-price-from"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    From
+                                                </label>
+                                                <input v-model="filterPrices.prices[0]" type="number"
+                                                    id="filter-price-from"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    min="0">
+                                            </div>
+
+                                            <div class="basis-1/3">
+                                                <label for="filter-price-to"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                    To
+                                                </label>
+                                                <input v-model="filterPrices.prices[1]" type="number"
+                                                    id="filter-price-to"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    min="0">
+                                            </div>
+
+                                            <button @click="applyPriceFilter()" type="button"
+                                                class="self-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                Apply
+                                            </button>
+
+                                        </div>
                                     </li>
                                 </ul>
+                                <!-- price filter end -->
 
-                                <Disclosure as="div" v-for="section in filters" :key="section.id"
-                                    class="py-6 border-b border-gray-200" v-slot="{ open }">
+                                <!-- brand filter start -->
+                                <Disclosure as="div" class="py-6 border-b border-gray-200" v-slot="{ open }">
                                     <h3 class="flow-root -my-3">
                                         <DisclosureButton
                                             class="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
-                                            <span class="font-medium text-gray-900">{{ section.name }}</span>
+                                            <span class="font-medium text-gray-900">Brands</span>
                                             <span class="flex items-center ml-6">
                                                 <svg v-if="!open" class="w-5 h-5 text-gray-800 dark:text-white"
                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -196,28 +324,68 @@
                                     </h3>
                                     <DisclosurePanel class="pt-6">
                                         <div class="space-y-4">
-                                            <div v-for="(option, optionIdx) in section.options" :key="option.value"
-                                                class="flex items-center">
-                                                <input :id="`filter-${section.id}-${optionIdx}`"
-                                                    :name="`${section.id}[]`" :value="option.value" type="checkbox"
-                                                    :checked="option.checked"
+                                            <div v-for="brand in brands" :key="brand.id" class="flex items-center">
+                                                <input :id="`filter-${brand.id}`" :value="brand.id"
+                                                    v-model="selectedBrands" type="checkbox"
                                                     class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
-                                                <label :for="`filter-${section.id}-${optionIdx}`"
-                                                    class="ml-3 text-sm text-gray-600">{{ option.label }}</label>
+                                                <label :for="`filter-${brand.id}`" class="ml-3 text-sm text-gray-600">
+                                                    {{ brand.name }}
+                                                </label>
                                             </div>
                                         </div>
                                     </DisclosurePanel>
                                 </Disclosure>
+                                <!-- brand filter end -->
+
+                                <!-- category filter start -->
+                                <Disclosure as="div" class="py-6 border-b border-gray-200" v-slot="{ open }">
+                                    <h3 class="flow-root -my-3">
+                                        <DisclosureButton
+                                            class="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500">
+                                            <span class="font-medium text-gray-900">Categories</span>
+                                            <span class="flex items-center ml-6">
+                                                <svg v-if="!open" class="w-5 h-5 text-gray-800 dark:text-white"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+                                                </svg>
+
+                                                <svg v-else class="w-5 h-5 text-gray-800 dark:text-white"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="M5 12h14" />
+                                                </svg>
+                                            </span>
+                                        </DisclosureButton>
+                                    </h3>
+                                    <DisclosurePanel class="pt-6">
+                                        <div class="space-y-4">
+                                            <div v-for="category in categories" :key="category.id"
+                                                class="flex items-center">
+                                                <input :id="`filter-${category.id}`" :value="category.id"
+                                                    v-model="selectedCategories" type="checkbox"
+                                                    class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                                                <label :for="`filter-${category.id}`"
+                                                    class="ml-3 text-sm text-gray-600">
+                                                    {{ category.name }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </DisclosurePanel>
+                                </Disclosure>
+                                <!-- category filter end -->
                             </form>
 
                             <!-- Product grid start -->
                             <div class="lg:col-span-3">
                                 <!-- Your content -->
-                                <Product :products="products"></Product>
+                                <Product :products="products.data"></Product>
                             </div>
                             <!-- Product grid end -->
                         </div>
-                    </section>
+                    </category>
                 </main>
             </div>
         </div>
@@ -227,7 +395,8 @@
 <script setup>
 import UserLayout from './Layouts/UserLayout.vue';
 import Product from './Components/Product.vue';
-import { ref } from 'vue'
+import { router, useForm } from '@inertiajs/vue3';
+import { ref, watch } from 'vue'
 import {
     Dialog,
     DialogPanel,
@@ -244,6 +413,8 @@ import {
 
 defineProps({
     products: Array,
+    categories: Array,
+    brands: Array,
 })
 
 const sortOptions = [
@@ -253,50 +424,46 @@ const sortOptions = [
     { name: 'Price: Low to High', href: '#', current: false },
     { name: 'Price: High to Low', href: '#', current: false },
 ]
-const subCategories = [
-    { name: 'Totes', href: '#' },
-    { name: 'Backpacks', href: '#' },
-    { name: 'Travel Bags', href: '#' },
-    { name: 'Hip Bags', href: '#' },
-    { name: 'Laptop Sleeves', href: '#' },
-]
-const filters = [
-    {
-        id: 'color',
-        name: 'Color',
-        options: [
-            { value: 'white', label: 'White', checked: false },
-            { value: 'beige', label: 'Beige', checked: false },
-            { value: 'blue', label: 'Blue', checked: true },
-            { value: 'brown', label: 'Brown', checked: false },
-            { value: 'green', label: 'Green', checked: false },
-            { value: 'purple', label: 'Purple', checked: false },
-        ],
-    },
-    {
-        id: 'category',
-        name: 'Category',
-        options: [
-            { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-            { value: 'sale', label: 'Sale', checked: false },
-            { value: 'travel', label: 'Travel', checked: true },
-            { value: 'organization', label: 'Organization', checked: false },
-            { value: 'accessories', label: 'Accessories', checked: false },
-        ],
-    },
-    {
-        id: 'size',
-        name: 'Size',
-        options: [
-            { value: '2l', label: '2L', checked: false },
-            { value: '6l', label: '6L', checked: false },
-            { value: '12l', label: '12L', checked: false },
-            { value: '18l', label: '18L', checked: false },
-            { value: '20l', label: '20L', checked: false },
-            { value: '40l', label: '40L', checked: true },
-        ],
-    },
-]
 
 const mobileFiltersOpen = ref(false)
+const selectedBrands = ref([])
+const selectedCategories = ref([])
+
+const filterPrices = useForm({
+    prices: [0, 100000]
+})
+
+const applyPriceFilter = () => {
+    filterPrices.transform((data) => (
+        {
+            ...data,
+            prices: {
+                from: filterPrices.prices[0],
+                to: filterPrices.prices[1]
+            }
+        }
+    )).get('products', {
+        preserveState: true,
+        replace: true,
+    })
+}
+
+const updateFilteredProducts = () => {
+    router.get('products', {
+        brands: selectedBrands.value,
+        categories: selectedCategories.value
+    }, {
+        preserveState: true,
+        replace: true,
+    })
+}
+
+watch(selectedBrands, () => {
+    updateFilteredProducts()
+})
+
+watch(selectedCategories, () => {
+    updateFilteredProducts()
+})
+
 </script>
