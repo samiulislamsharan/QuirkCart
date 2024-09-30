@@ -41,7 +41,7 @@ Route::prefix('cart')->controller(CartController::class)->group(function () {
     Route::delete('/destroy/{product}', 'destroy')->name('cart.destroy');
 });
 
-Route::prefix('product')->controller(ProductListController::class)->group(function () {
+Route::prefix('products')->controller(ProductListController::class)->group(function () {
     Route::get('/', 'index')->name('product.index');
 });
 
