@@ -10,6 +10,6 @@ class CurrencyHelper
         $formattedAmount = number_format(abs($amount), 2, '.', ',');
 
         // Add the BDT currency symbol and handle negative amounts
-        return ($amount < 0 ? '-' : '') . '৳ ' . $formattedAmount;
+        return ($amount < 0 ? '-' : '') . $formattedAmount . '৳ ';
     }
 }
