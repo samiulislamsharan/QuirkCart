@@ -384,6 +384,8 @@
                                 <Product :products="products.data"></Product>
                             </div>
                             <!-- Product grid end -->
+
+                            <!-- TODO: add Pagination (most probably) or Infinite Scroll -->
                         </div>
                     </category>
                 </main>
