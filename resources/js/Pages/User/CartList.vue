@@ -161,6 +161,8 @@
                         </div>
 
                         <div class="flex-1 max-w-4xl mx-auto mt-6 space-y-6 lg:mt-0 lg:w-full">
+
+                            <!-- user address start -->
                             <div v-if="canLogin"
                                 class="p-4 space-y-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                                 <p class="text-xl font-semibold text-gray-900 dark:text-white">Address</p>
@@ -346,6 +348,7 @@
                                     </form>
                                 </div>
                             </div>
+                            <!-- user address end -->
 
                             <div
                                 class="p-4 space-y-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
