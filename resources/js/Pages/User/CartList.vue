@@ -442,6 +442,12 @@ import { computed } from 'vue';
 import { router, usePage } from '@inertiajs/vue3';
 import UserLayout from './Layouts/UserLayout.vue';
 
+defineProps({
+    canLogin: Boolean,
+    canRegister: Boolean,
+    userAddresses: Object
+});
+
 const carts = computed(() => usePage().props.cart.data.items)
 const total = computed(() => usePage().props.cart.data.total)
 const products = computed(() => usePage().props.cart.data.products)
