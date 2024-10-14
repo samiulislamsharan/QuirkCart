@@ -161,28 +161,55 @@
                         </div>
 
                         <div class="flex-1 max-w-4xl mx-auto mt-6 space-y-6 lg:mt-0 lg:w-full">
-                            <div
+                            <div v-if="canLogin"
                                 class="p-4 space-y-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                                 <p class="text-xl font-semibold text-gray-900 dark:text-white">Address</p>
 
                                 <div class="space-y-4">
-                                    <div class="space-y-2">
+                                    <div v-if="userAddresses" class="space-y-2">
                                         <dl class="flex flex-col items-center justify-between gap-4 text-start">
                                             <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Shipping
-                                                Address:
+                                                and Billing Address:
                                             </dt>
                                             <dd class="text-base font-medium text-gray-900 dark:text-white">
-                                                1234 Elm Street, New York, NY 10001
+                                                <div class="text-left">
+                                                    <p class="text-base font-medium text-gray-900 dark:text-white">
+                                                        Full Name: {{ userAddresses.name }}
+                                                    </p>
+
+                                                    <p class="text-base font-medium text-gray-900 dark:text-white">
+                                                        Mobile Number: {{ userAddresses.mobile_number }}
+                                                    </p>
+                                                </div>
+                                                <span
+                                                    class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
+                                                    {{ userAddresses.type }}
+                                                </span>
+                                                {{ userAddresses.address1 }}, {{ userAddresses.city }} - {{
+                                                    userAddresses.zipcode }}
                                             </dd>
                                         </dl>
 
+                                        <a href="#"
+                                            class="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <span>
+                                                <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                                </svg>
+                                            </span>
+                                            Edit Address
+                                        </a>
+                                    </div>
+                                    <div v-else class="space-y-2">
                                         <dl class="flex flex-col items-center justify-between gap-4 text-start">
-                                            <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Billing
-                                                Address:
-                                            </dt>
-                                            <dd class="text-base font-medium text-gray-900 dark:text-white">
-                                                1234 Elm Street, New York, NY 10001
-                                            </dd>
+                                            <div
+                                                class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-500">
+                                                No address found, please add shipping address to continue.
+                                            </div>
                                         </dl>
                                     </div>
                                 </div>
