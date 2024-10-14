@@ -438,8 +438,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { router, usePage } from '@inertiajs/vue3';
+import { computed, ref } from 'vue';
+import { Link, router, usePage } from '@inertiajs/vue3';
 import UserLayout from './Layouts/UserLayout.vue';
 
 defineProps({
@@ -461,4 +461,12 @@ const update = (product, quantity) =>
     );
 
 const remove = (product) => router.delete(route('cart.destroy', product));
+
+const name = ref('');
+const address = ref('');
+const city = ref('');
+const state_province = ref('');
+const postal_code = ref('');
+const mobile_number = ref('');
+const address_type = ref('');
 </script>
