@@ -214,20 +214,137 @@
                                     </div>
                                 </div>
 
-                                <a href="#"
+                                <div v-if="!userAddresses & canRegister" class="space-y-4">
+                                    <form @submit.prevent="submitSaveAddress">
+                                        <div class="space-y-2">
+                                            <dl class="flex flex-col items-center justify-between gap-4 text-start">
+                                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                                    Fill in your Shipping and Billing Address:
+                                                </dt>
+                                                <dd class="w-full text-base font-medium text-gray-900 dark:text-white">
+                                                    <div class="mb-3">
+                                                        <label for="guest-name-input"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            Full Name
+                                                        </label>
+                                                        <input v-model="name" type="text" id="guest-name-input"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="guest-address-input"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            Address
+                                                        </label>
+                                                        <input v-model="address" type="text" id="guest-address-input"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="guest-city-input"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            City
+                                                        </label>
+                                                        <input v-model="city" type="text" id="guest-city-input"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="guest-state-input"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            State/Province
+                                                        </label>
+                                                        <input v-model="state_province" type="text"
+                                                            id="guest-state-input"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="guest-post-code-input"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            Postal Code
+                                                        </label>
+                                                        <input v-model="postal_code" type="number"
+                                                            id="guest-post-code-input"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="guest-mobile-input"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            Mobile Number
+                                                        </label>
+                                                        <input v-model="mobile_number" type="number"
+                                                            id="guest-mobile-input"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <h3
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                            Address Type</h3>
+                                                        <ul
+                                                            class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                                            <li
+                                                                class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                                                <div class="flex items-center ps-3">
+                                                                    <input v-model="address_type" checked
+                                                                        id="home-address-radio" type="radio"
+                                                                        value="Home" name="address-type"
+                                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                                    <label for="home-address-radio"
+                                                                        class="w-full py-3 text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">
+                                                                        <svg class="inline-block w-6 h-6 text-gray-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" fill="none"
+                                                                            viewBox="0 0 24 24">
+                                                                            <path stroke="currentColor"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" stroke-width="2"
+                                                                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                                                                        </svg>
+                                                                        Home
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                            <li
+                                                                class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                                                <div class="flex items-center ps-3">
+                                                                    <input v-model="address_type"
+                                                                        id="office-address-radio" type="radio"
+                                                                        value="Office" name="address-type"
+                                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                                    <label for="office-address-radio"
+                                                                        class="w-full py-3 text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">
+                                                                        <svg class="inline-block w-6 h-6 text-gray-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" fill="none"
+                                                                            viewBox="0 0 24 24">
+                                                                            <path stroke="currentColor"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" stroke-width="2"
+                                                                                d="M8 7H5a2 2 0 0 0-2 2v4m5-6h8M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m0 0h3a2 2 0 0 1 2 2v4m0 0v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6m18 0s-4 2-9 2-9-2-9-2m9-2h.01" />
+                                                                        </svg>
+                                                                        Office
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+
+                                        <button type="submit"
                                     class="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <span>
                                         <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                            viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                                        d="M11 16h2m6.707-9.293-2.414-2.414A1 1 0 0 0 16.586 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7.414a1 1 0 0 0-.293-.707ZM16 20v-6a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v6h8ZM9 4h6v3a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4Z" />
                                         </svg>
                                     </span>
-
-                                    Edit Address
-                                </a>
+                                            Save Address
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
 
                             <div
