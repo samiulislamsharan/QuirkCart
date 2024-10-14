@@ -469,4 +469,16 @@ const state_province = ref('');
 const postal_code = ref('');
 const mobile_number = ref('');
 const address_type = ref('');
+
+function submitSaveAddress() {
+    console.log(
+        name.value,
+        address.value,
+        city.value,
+        state_province.value,
+        postal_code.value,
+        mobile_number.value,
+        address_type.value
+    )
+}
 </script>
