@@ -401,7 +401,7 @@
 
                                 <div class="flex items-center justify-center gap-2">
                                     <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
-                                    <a href="#" title=""
+                                    <Link :href="route('product.index')" title=""
                                         class="inline-flex items-center gap-2 text-sm font-medium text-blue-700 underline hover:no-underline dark:text-blue-500">
                                         Continue Shopping
                                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -409,7 +409,7 @@
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
                                         </svg>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
 
