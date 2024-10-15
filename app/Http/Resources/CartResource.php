@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Helper\Cart;
+use App\Helpers\Cart;
 use App\Helpers\CurrencyHelper;
 use App\Models\Product;
 use Illuminate\Http\Request;
