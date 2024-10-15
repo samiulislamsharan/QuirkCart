@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Helper\Cart;
+use App\Helpers\Cart;
 use App\Http\Resources\CartResource;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
