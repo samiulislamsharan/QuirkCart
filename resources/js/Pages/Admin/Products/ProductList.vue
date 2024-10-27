@@ -362,6 +362,7 @@ import { Plus } from '@element-plus/icons-vue'
 
 defineProps({
     products: Object,
+    pagination: Object,
 })
 
 const categories = usePage().props.categories;
