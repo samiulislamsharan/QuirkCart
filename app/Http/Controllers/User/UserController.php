@@ -18,6 +18,7 @@ class UserController extends Controller
             'brand',
             'product_images'
         )
+            ->where('published', 1)
             ->orderBy('id', 'DESC')
             ->limit(8)
             ->get();
