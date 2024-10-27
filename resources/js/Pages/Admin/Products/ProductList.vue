@@ -361,7 +361,7 @@ import { onMounted, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
 
 defineProps({
-    products: Array,
+    products: Object,
 })
 
 const categories = usePage().props.categories;
