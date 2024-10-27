@@ -19,7 +19,7 @@ class ProductController extends Controller
             'category',
             'brand',
             'product_images'
-        )->get();
+        )->paginate(10);
         $categories = Category::get();
         $brands = Brand::get();
 
