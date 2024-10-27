@@ -14,7 +14,7 @@ class ProductListController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category', 'brand', 'product_images');
+        $products = Product::with('category', 'brand', 'product_images')->where('published', 1);
         $categories = Category::all();
         $brands = Brand::all();
 
