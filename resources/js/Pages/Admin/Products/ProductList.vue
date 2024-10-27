@@ -233,21 +233,21 @@
                                 <td class="px-4 py-3">
                                     <!-- show warning badge if quantity is less than or equal to 10 -->
                                     <span v-if="product.quantity <= 10"
-                                        class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+                                        class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 block text-center">
                                         {{ product.quantity }}
                                     </span>
                                     <span v-else
-                                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300 block text-center">
                                         {{ product.quantity }}
                                     </span>
                                 </td>
                                 <td class="px-4 py-3">
                                     <span v-if="product.in_stock == 1"
-                                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300 block text-center">
                                         In Stock
                                     </span>
                                     <span v-else
-                                        class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                                        class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 block text-center">
                                         Stock Out
                                     </span>
                                 </td>
