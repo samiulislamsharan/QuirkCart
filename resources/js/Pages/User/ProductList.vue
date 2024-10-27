@@ -382,10 +382,12 @@
                             <div class="lg:col-span-3">
                                 <!-- Your content -->
                                 <Product :products="products.data"></Product>
+
+                                <div class="my-4 text-center">
+                                    <Pagination :pagination="products.meta" />
+                                </div>
                             </div>
                             <!-- Product grid end -->
-
-                            <!-- TODO: add Pagination (most probably) or Infinite Scroll -->
                         </div>
                     </category>
                 </main>
@@ -396,6 +398,7 @@
 
 <script setup>
 import UserLayout from './Layouts/UserLayout.vue';
+import Pagination from '@/Components/Pagination.vue';
 import Product from './Components/Product.vue';
 import { router, useForm } from '@inertiajs/vue3';
 import { ref, watch } from 'vue'
