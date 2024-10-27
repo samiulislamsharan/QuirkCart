@@ -296,9 +296,10 @@
                     aria-label="Table navigation">
                     <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                         Showing
-                        <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">{{ products.from }}-{{ products.to
+                            }}</span>
                         of
-                        <span class="font-semibold text-gray-900 dark:text-white">1000</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">{{ products.total }}</span>
                     </span>
                     <!-- Table footer start -->
                     <ul class="inline-flex items-stretch -space-x-px">
