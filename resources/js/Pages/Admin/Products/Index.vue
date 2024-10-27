@@ -6,7 +6,7 @@
 
 <script setup>
 defineProps({
-    products: Array,
+    products: Object,
     categories: Array,
     brands: Array,
 })
